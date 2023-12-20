@@ -46,32 +46,3 @@ const Statistics=(props)=>{
   }
 }
 export default App
-
-/*
-Exercise 2
-const App = () => {
-  const [feedback,setFeedback]=useState({g:0,n:0,b:0})
-  const increaseG = () =>{
-    setFeedback({...feedback,g:feedback.g+1})
-  }
-  const increaseN = () =>{
-    setFeedback({...feedback,n:feedback.n+1})
-  }
-  const increaseB = () =>{
-    setFeedback({...feedback,b:feedback.b+1})
-  }
-  console.log(feedback)
-  return (
-    <>
-    <h3>Give Feedback</h3>
-    <button onClick={increaseG}>good</button>
-    <button onClick={increaseN}>neutral</button>
-    <button onClick={increaseB}>bad</button>
-    <h2>Statistics</h2>
-    <p>Good:{Math.round(feedback.g*1000/(feedback.g+feedback.n+feedback.b))/10+"%"}</p> 
-    <p>Neutral:{Math.round(feedback.n*1000/(feedback.g+feedback.n+feedback.b))/10+"%"}</p> 
-    <p>Bad:{Math.round(feedback.b*1000/(feedback.g+feedback.n+feedback.b))/10+"%"}</p> 
-    </>
-  )
-}
-*/
