@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const App = () => {
 
@@ -15,8 +15,10 @@ const App = () => {
   ];
 
   const [selected, setSelected] = useState(0);
-  const [highestIndex, setHighestIndex] = useState(0);
   const [points, setPoints] = useState([0,0,0,0,0]);
+
+  const highest = Math.max(...points);
+  const highestIdx = points.indexOf(highest);
 
   const nextQuote = () => {
     if(selected === quotes.length -1) {
@@ -26,31 +28,24 @@ const App = () => {
     }
   }
 
-  const checkHighestVote = () => {
-    console.log("checking")
-    // loop points and check which index has highest
-    // set highest index to a seperate state variable
-  }
-
   const vote = () => {
     const copy = [...points];
     copy[selected] += 1;
-    checkHighestVote();
     setPoints(copy);
   }
 
   return (
     <>
-      <h1>Quote of the day</h1>
+      <h1>Quote </h1>
       <p>{quotes[selected]}</p>
+      <p>has {points[selected]} votes. </p>
       <button onClick={vote}>Vote</button>
       <button onClick={nextQuote}>Next quote</button>
-      <h1>Quotes</h1>
-      <p>{quotes[selected]}</p>
-      <p>has {points[selected]} votes.</p>
-      <button onClick={vote}>Vote</button>
-      <button onClick={nextQuote}>Next quote</button>
+      <h1>Quotes of the day</h1>
+      <p>{quotes[highestIdx]}</p>
+      <p>has {points[highestIdx]} votes.</p>
     </>
   )
 }
+
 export default App
