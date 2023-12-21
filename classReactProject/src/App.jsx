@@ -23,6 +23,8 @@ const App = () => {
 
   return (
     <div>
+      <Quoteoftheday quotes={quotes} votes={votes}/>
+      <h3>Other Quotes</h3>
       <p>{quotes[selected]}</p>
       <p>Votes: {votes[selected]}</p>
       <button onClick={handleVote}>Vote</button>
@@ -33,6 +35,23 @@ const App = () => {
 
 export default App
 
+const Quoteoftheday = (props) => {
+  const getMaxVote=(para) => {
+    let max=0;
+    let imax=0;
+    for( let i=0;i<para.length;i++){
+      if(para[i]>max) {max = para[i];imax=[i]}
+    }
+    return [max,imax];
+  }
+  return (
+    <>
+    <h3>Quote of the day</h3>
+      <p>{props.quotes[getMaxVote(props.votes)[1]]}</p>
+      <p>Number of Votes: {getMaxVote(props.votes)[0]}</p>
+    </>
+  )
+}
 /*
 const [votes, setVotes] = useState(Array(quotes.length).fill(0));
 */
